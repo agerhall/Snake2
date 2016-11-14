@@ -218,7 +218,7 @@ public class SnakeModel extends GameModel{
 			this.tailPos.removeLast();
 		}
 
-			// Check if the snake covers the whole game field
+			// Check if the snake covers the whole game field hej
 
 		/**
 		 * 
