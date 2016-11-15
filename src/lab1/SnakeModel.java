@@ -46,10 +46,17 @@ public class SnakeModel extends GameModel{
 				0),
 				Color.BLACK, 2.0);
 
-		/** Graphical representation of the snake's head */
+		/** Graphical representation of the snake's head while heading North */
 		private static final GameTile SNAKEHEAD_TILE = new SnakeHeadTile(Color.BLACK);
 		
-		/** Grapgical representation of the snake's tail */
+		/** Graphical representation of the snake's head while heading South */
+		private static final GameTile SNAKEHEAD_TILE_SOUTH = new SnakeHeadTileSouth(Color.BLACK);
+		/** Graphical representation of the snake's head while heading West */
+		private static final GameTile SNAKEHEAD_TILE_WEST = new SnakeHeadTileWest(Color.BLACK);
+		/** Graphical representation of the snake's head while heading East*/
+		private static final GameTile SNAKEHEAD_TILE_EAST = new SnakeHeadTileEast(Color.BLACK);
+		
+		/** Graphical representation of the snake's tail */
 		private static final GameTile SNAKETAIL_TILE = new RoundTile(Color.BLACK,
 				new Color(255, 255, 0), 2.0);
 
@@ -211,7 +218,16 @@ public class SnakeModel extends GameModel{
 			}
 			
 			// Draw snake head and snake tail at new position and draw blank at end
-			setGameboardState(this.snakeHeadPos, SNAKEHEAD_TILE);
+			if (directionOfKey(lastKey)==Directions.NORTH){
+				setGameboardState(this.snakeHeadPos, SNAKEHEAD_TILE);
+			}else if (directionOfKey(lastKey)==Directions.SOUTH){
+				setGameboardState(this.snakeHeadPos, SNAKEHEAD_TILE_SOUTH);
+			}else if (directionOfKey(lastKey)==Directions.WEST){
+				setGameboardState(this.snakeHeadPos, SNAKEHEAD_TILE_WEST);
+			}else{
+				setGameboardState(this.snakeHeadPos, SNAKEHEAD_TILE_EAST);
+			}
+			
 			setGameboardState(this.tailPos.getFirst(), SNAKETAIL_TILE);
 			setGameboardState(this.tailPos.getLast(), BLANK_TILE);
 			this.tailPos.removeLast();
