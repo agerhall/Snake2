@@ -44,20 +44,20 @@ public class SnakeModel extends GameModel{
 		/** Graphical representation of a food-tile. */
 		private static final GameTile FOOD_TILE = new RoundTile(new Color(255, 215,
 				0),
-				Color.BLACK, 2.0);
+				Color.RED, 2.0);
 
 		/** Graphical representation of the snake's head while heading North */
-		private static final GameTile SNAKEHEAD_TILE = new SnakeHeadTile(Color.BLACK);
+		private static final GameTile SNAKEHEAD_TILE = new SnakeHeadTile(Color.GREEN);
 		
 		/** Graphical representation of the snake's head while heading South */
-		private static final GameTile SNAKEHEAD_TILE_SOUTH = new SnakeHeadTileSouth(Color.BLACK);
+		private static final GameTile SNAKEHEAD_TILE_SOUTH = new SnakeHeadTileSouth(Color.GREEN);
 		/** Graphical representation of the snake's head while heading West */
-		private static final GameTile SNAKEHEAD_TILE_WEST = new SnakeHeadTileWest(Color.BLACK);
+		private static final GameTile SNAKEHEAD_TILE_WEST = new SnakeHeadTileWest(Color.GREEN);
 		/** Graphical representation of the snake's head while heading East*/
-		private static final GameTile SNAKEHEAD_TILE_EAST = new SnakeHeadTileEast(Color.BLACK);
+		private static final GameTile SNAKEHEAD_TILE_EAST = new SnakeHeadTileEast(Color.GREEN);
 		
 		/** Graphical representation of the snake's tail */
-		private static final GameTile SNAKETAIL_TILE = new RoundTile(Color.BLACK,
+		private static final GameTile SNAKETAIL_TILE = new RoundTile(Color.GREEN,
 				new Color(255, 255, 0), 2.0);
 
 		/** Graphical representation of a blank tile. */
@@ -128,7 +128,7 @@ public class SnakeModel extends GameModel{
 		}
 
 		/**
-		 * Update the direction of the collector
+		 * Update the direction of the snake
 		 * according to the user's key punch.
 		 */
 		private void updateDirection(final int key) {
@@ -218,11 +218,11 @@ public class SnakeModel extends GameModel{
 			}
 			
 			// Draw snake head and snake tail at new position and draw blank at end
-			if (directionOfKey(lastKey)==Directions.NORTH){
+			if (this.direction==Directions.NORTH){
 				setGameboardState(this.snakeHeadPos, SNAKEHEAD_TILE);
-			}else if (directionOfKey(lastKey)==Directions.SOUTH){
+			}else if (this.direction==Directions.SOUTH){
 				setGameboardState(this.snakeHeadPos, SNAKEHEAD_TILE_SOUTH);
-			}else if (directionOfKey(lastKey)==Directions.WEST){
+			}else if (this.direction==Directions.WEST){
 				setGameboardState(this.snakeHeadPos, SNAKEHEAD_TILE_WEST);
 			}else{
 				setGameboardState(this.snakeHeadPos, SNAKEHEAD_TILE_EAST);
